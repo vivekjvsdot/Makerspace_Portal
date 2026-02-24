@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { JobFormData, UserType, MachineType, ComponentItem } from '../types';
-import { getFeasibilityAdvice } from '../services/geminiService';
+// import { getFeasibilityAdvice } from '../services/geminiService';
 
 interface JobFormProps {
   onSubmit: (data: JobFormData) => void;
@@ -85,12 +85,12 @@ const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
     }
   };
 
-  const handleGetAdvice = async () => {
-    setIsAdviceLoading(true);
-    const feedback = await getFeasibilityAdvice(formData.components);
-    setAdvice(feedback);
-    setIsAdviceLoading(false);
-  };
+  // const handleGetAdvice = async () => {
+  //   setIsAdviceLoading(true);
+  //   const feedback = await getFeasibilityAdvice(formData.components);
+  //   setAdvice(feedback);
+  //   setIsAdviceLoading(false);
+  // };
 
   const toBase64 = (file: File): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -295,20 +295,20 @@ const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
         </button>
 
         <div className="flex items-center justify-between px-2 pt-8">
-          <button type="button" onClick={handleGetAdvice} disabled={isAdviceLoading} className="text-xs font-bold text-indigo-600 hover:underline">
+          {/* <button type="button" onClick={handleGetAdvice} disabled={isAdviceLoading} className="text-xs font-bold text-indigo-600 hover:underline">
             {isAdviceLoading ? 'Analyzing...' : 'Analyze with AI Assistant'}
-          </button>
+          </button> */}
           <button type="submit" disabled={loading} className="bg-indigo-600 text-white px-10 py-3 rounded-lg font-bold shadow-lg hover:bg-indigo-700 transition-all disabled:opacity-50">
             {loading ? 'Submitting...' : 'Submit'}
           </button>
         </div>
 
-        {advice && (
+        {/* {advice && (
           <div className="mt-6 bg-indigo-50 border border-indigo-100 p-4 rounded-xl text-sm text-indigo-800 animate-in fade-in zoom-in duration-300">
              <div className="font-bold mb-1">AI Technician Advice:</div>
              <div className="whitespace-pre-line">{advice}</div>
           </div>
-        )}
+        )} */}
       </div>
     </form>
   );
